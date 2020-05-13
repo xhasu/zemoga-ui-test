@@ -1,0 +1,165 @@
+
+.votes {
+    position: relative;
+
+    &-title {
+        position: relative;
+        margin-bottom: 40px;
+        text-align: left;
+        color: $color-grey-dark;
+        font-size: 40px;
+        font-weight: 300;
+        line-height: 1.2;
+    }
+    &-content {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.vote {
+    &-box {
+        position: relative;
+        height: 550px;
+        width: 100%;
+        margin-bottom: 40px;
+        max-width: 492px;
+        overflow: hidden;
+    }
+    &-media {
+        @include absolute(0,0,0,0);
+        z-index: 0;
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            margin-bottom: 0;
+
+            object-fit: cover;
+            object-position: center center;
+        }
+
+        &:after {
+            content: "";
+            display: block;
+            // background: black;
+            background: linear-gradient(to top, rgba(black, .6), rgba(black, 0) 60%);
+            background: linear-gradient(to top, black, rgba(black, .6) 30%, rgba(black, 0) 60%);
+            @include no-events();
+            @include cover();
+        }
+    }
+    &-info {
+        @include absolute($bottom: 0, $left: 0, $right: 0);
+        color: white;
+        z-index: 1;
+    }
+    &-body {
+        position: relative;
+        padding: 32px 40px;
+        box-sizing: border-box;
+    }
+    &-title {
+        font-size: 45px;
+        line-height: 1;
+        margin-bottom: 12px;
+    }
+    &-description {
+        position: relative;
+        padding-right: 20px;
+        box-sizing: border-box;
+        p {
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+    }
+    &-state {
+        @include absolute($top: 0, $left: 0);
+        margin-top: 41px;
+        @include size(31px);
+        text-align: center;
+        background-color: $color-grey;
+        font-size: 0;
+        span {
+            display: inline-block;
+            height: 100%;
+            width: 0;
+            margin: 0;
+            vertical-align: middle;
+        }
+        img {
+            display: inline-block;
+            vertical-align: middle;
+            width: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 0;
+        }
+        &.th-ocean {
+            background-color: $color-ocean;
+        }
+        &.th-orange {
+            background-color: $color-orange;
+        }
+    }
+    &-actions {}
+
+    &-bar {
+        position: relative;
+        height: 50px;
+        display: flex;
+        align-items: stretch;
+
+        .bar-item {
+            flex: 0 0 42px;
+            display: block;
+        }
+        
+        .bar-values {
+            flex: 1 1 100%;
+            display: flex;
+            line-height: 50px;
+            span {
+                display: block;
+                flex-grow: 1;
+                flex-shrink: 1;
+                font-size: 29px;
+            }
+
+            small {
+                display: inline-block;
+                font-size: 20px;
+            }
+
+            .bar-like {
+                text-align: left;
+            }
+            .bar-dislike {
+                text-align: right;
+            }
+        }
+        .bar-icon {
+            width: 42px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                display: block;
+                width: 28px;
+                height: auto;
+                margin-bottom: 0;
+            }
+        }
+
+        .th-ocean {
+            background-color: rgba($color-ocean, .7);
+        }
+        .th-orange {
+            background-color: rgba($color-orange, .7);
+        }
+    }
+}
