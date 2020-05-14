@@ -8,7 +8,7 @@
         "votes": {
             "count": 100,
             "likes": 64,
-            "dislike": 36
+            "dislikes": 36
         }
     },
     {
@@ -20,7 +20,7 @@
         "votes": {
             "count": 100,
             "likes": 36,
-            "dislike": 64
+            "dislikes": 64
         }
     },
     {
@@ -32,7 +32,7 @@
         "votes": {
             "count": 100,
             "likes": 36,
-            "dislike": 64
+            "dislikes": 64
         }
     },
     {
@@ -44,7 +44,7 @@
         "votes": {
             "count": 100,
             "likes": 64,
-            "dislike": 36
+            "dislikes": 36
         }
     }
 ]

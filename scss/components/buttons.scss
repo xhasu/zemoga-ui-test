@@ -42,3 +42,50 @@
         border-width: 2px;
     }
 }
+
+.button-vote {
+    @include btn();
+
+    position: relative;
+    @include size(31px);
+    text-align: center;
+    border: 2px solid transparent;
+    background-color: $color-grey;
+    font-size: 0;
+    img {
+        display: inline-block;
+        vertical-align: middle;
+        width: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0;
+    }
+    &.th-ocean {
+        background-color: $color-ocean;
+    }
+    &.th-orange {
+        background-color: $color-orange;
+    }
+
+    &.active, 
+    &:hover {
+        border-color: white;
+    }
+}
+
+.button-simple {
+    @include btn();
+
+    position: relative;
+    text-align: center;
+    font-size: 14px;
+    height: 31px;
+    line-height: 1.2;
+    color: white;
+    padding: 0 26px;
+    border: 1px solid white;
+
+    &:hover {
+        background-color: rgba(white, .2);
+    }
+}

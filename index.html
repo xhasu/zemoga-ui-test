@@ -153,46 +153,68 @@
 						<div class="vote-info">
 							<div class="vote-body">
 								<div class="vote-title">{{ user.username }}</div>
-								<!-- <div class="vote-subtitle"><strong>1 month ago</strong> in <span>Entertainment</span></div> -->
-								<div class="vote-description">
+								<div class="vote-subtitle"><strong>{{ user.human_time }}</strong> in <span>{{ user.category }}</span></div>
+
+								<div class="vote-description" ng-show="!user.votes.has_vote">
 									<p>
 										{{ user.description }}
 									</p>
 								</div>
+								<div class="vote-description" ng-show="user.votes.has_vote">
+									<p>
+										Thank you for voting!
+									</p>
+								</div>
 
 								<!-- state color [th-ocean, th-orange] -->
-								<div class="vote-state th-ocean">
-									<img src="img/icon-like.png" alt=""><span></span>
-									<!-- <img src="img/icon-dislike.png" alt=""><span></span> -->
+								<div class="vote-state" ng-show="user.votes.last_vote != undefined" ng-class="{'th-ocean': user.votes.last_vote == 'likes','th-orange': user.votes.last_vote == 'dislikes'}">
+									<img src="img/icon-like.png" alt="like" ng-show="user.votes.last_vote == 'likes'">
+									<img src="img/icon-dislike.png" alt="dislike" ng-show="user.votes.last_vote == 'dislikes'">
+									<span></span>
 								</div>
 
 								<!-- TODO vote-actions UI -->
-								<div class="vote-actions" hidden>
-									<div class="actions-group">
+								<div class="vote-actions">
+									<div class="actions-group" ng-show="!user.votes.has_vote">
 										<!-- like -->
+										<button class="button-vote th-ocean" ng-click="user.votes.select_vote = 'likes'" ng-class="{'active': user.votes.select_vote == 'likes'}">
+											<img src="img/icon-like.png" alt="like">
+										</button>
 										<!-- dislike -->
+										<button class="button-vote th-orange" ng-click="user.votes.select_vote = 'dislikes'" ng-class="{'active': user.votes.select_vote == 'dislikes'}">
+											<img src="img/icon-dislike.png" alt="like">
+										</button>
 										<!-- vote now -->
-
+										<button class="button-simple" ng-click="VC.vote(user.votes, user.votes.select_vote)">
+											Vote now
+										</button>
+									</div>
+									<div class="actions-group" ng-show="user.votes.has_vote">
 										<!-- vote again -->
+										<button class="button-simple" ng-click="VC.voteAgain(user)">
+											Vote again
+										</button>
 
 										<!-- view full report -->
+										<div class="actions-disclaimer" hidden>
+											<b>{{ user.human_time }}</b> <br>
+											<span>{{ user.category }}</span>
+										</div>
 									</div>
-									<div class="actions-disclaimer">
-										<span>1 month ago</span> <br>
-										<span>in Entertainment</span>
-									</div>
+
+
 								</div>
 
 							</div>
 							<div class="vote-bar">
 								<div class="bar-item th-ocean">
-									<div class="bar-icon" ng-click="user.votes.likes = user.votes.likes + 1; user.votes.count = user.votes.count + 1">
+									<div class="bar-icon">
 										<img src="img/icon-like.png" alt="" width="28">
 									</div>
 								</div>
 								<div class="bar-item bar-values">
 									<span class="bar-like th-ocean" ng-style="{'width': user.value_likes + '%'}">{{ user.value_likes = (user.votes.likes * 100) / user.votes.count | number:1 }} <small>%</small></span>
-									<span class="bar-dislike th-orange" ng-style="{'width': user.value_dislikes + '%'}">{{ user.value_dislikes = (user.votes.dislike * 100) / user.votes.count | number:1 }} <small>%</small></span>
+									<span class="bar-dislike th-orange" ng-style="{'width': user.value_dislikes + '%'}">{{ user.value_dislikes = (user.votes.dislikes * 100) / user.votes.count | number:1 }} <small>%</small></span>
 								</div>
 								<div class="bar-item th-orange">
 									<div class="bar-icon">

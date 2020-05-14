@@ -64,7 +64,12 @@
     &-title {
         font-size: 45px;
         line-height: 1;
-        margin-bottom: 12px;
+    }
+    &-subtitle {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 1;
+        margin-bottom: 18px;
     }
     &-description {
         position: relative;
@@ -106,7 +111,13 @@
             background-color: $color-orange;
         }
     }
-    &-actions {}
+    &-actions {
+        .actions-group {
+            .button-vote {
+                margin-right: 8px;
+            }
+        }
+    }
 
     &-bar {
         position: relative;
@@ -128,6 +139,8 @@
                 flex-grow: 1;
                 flex-shrink: 1;
                 font-size: 29px;
+                overflow: hidden;
+                min-width: 50px;
             }
 
             small {
