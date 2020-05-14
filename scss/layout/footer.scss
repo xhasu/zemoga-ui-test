@@ -17,6 +17,9 @@
             box-sizing: border-box;
             @include below($tablet) {
                 padding-bottom: 0;
+                &:last-child {
+                    padding-bottom: 14px;
+                }
             }
             @include below($sm) {
                 padding-top: 14px;

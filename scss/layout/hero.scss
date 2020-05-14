@@ -13,6 +13,10 @@
     background-color: white;
     box-sizing: border-box;
 
+    @include above($desktop) {
+        height: 100vh;
+    }
+
     @include below($tablet) {
         height: 620px;
     }
@@ -215,6 +219,9 @@
             align-items: center;
             justify-content: flex-end;
 
+        }
+        .bar-line {
+            display: none;
         }
         .bar-time {
             flex: 1 1 68%;

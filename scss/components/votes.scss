@@ -1,6 +1,7 @@
 
 .votes {
     position: relative;
+    box-sizing: border-box;
 
     &-title {
         position: relative;
@@ -10,12 +11,26 @@
         font-size: 40px;
         font-weight: 300;
         line-height: 1.2;
+        @include below($tablet) {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
     }
     &-content {
         position: relative;
         display: flex;
+        margin-right: auto;
+        margin-left: auto;
+        width: 100%;
         flex-wrap: wrap;
         justify-content: space-between;
+
+        @include below(1080px) {
+            max-width: 860px;
+        }
+        @include below($laptop) {
+            margin-bottom: 20px;
+        }
     }
 }
 
@@ -27,6 +42,24 @@
         margin-bottom: 40px;
         max-width: 492px;
         overflow: hidden;
+        @include below(1080px) {
+            height: 420px;
+            max-width: 420px;
+            margin-bottom: 20px;
+        }
+        @include below($laptop) {
+            max-width: 50%;
+            margin-bottom: 0;
+        }
+        @include below($sm) {
+            max-width: 420px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+        }
+        @include below($phone) {
+            height: 360px;
+        }
     }
     &-media {
         @include absolute(0,0,0,0);
@@ -60,10 +93,16 @@
         position: relative;
         padding: 32px 40px;
         box-sizing: border-box;
+        @include below($laptop) {
+            padding: 20px 15px;
+        }
     }
     &-title {
         font-size: 45px;
         line-height: 1;
+        @include below($laptop) {
+            font-size: 32px;
+        }
     }
     &-subtitle {
         font-size: 14px;
@@ -75,6 +114,9 @@
         position: relative;
         padding-right: 20px;
         box-sizing: border-box;
+        @include below($laptop) {
+            padding-right: 0;
+        }
         p {
             font-size: 16px;
             font-weight: 300;
@@ -89,6 +131,11 @@
         text-align: center;
         background-color: $color-grey;
         font-size: 0;
+
+        @include below($laptop) {
+            margin-top: -40px;
+        }
+
         span {
             display: inline-block;
             height: 100%;
@@ -124,16 +171,27 @@
         height: 50px;
         display: flex;
         align-items: stretch;
+        @include below($laptop) {
+            height: 30px;
+        }
 
         .bar-item {
             flex: 0 0 42px;
             display: block;
+            @include below($laptop) {
+                flex: 0 0 30px;
+            }
         }
         
         .bar-values {
             flex: 1 1 100%;
             display: flex;
             line-height: 50px;
+
+            @include below($laptop) {
+                line-height: 30px;
+            }
+
             span {
                 display: block;
                 flex-grow: 1;
@@ -141,6 +199,10 @@
                 font-size: 29px;
                 overflow: hidden;
                 min-width: 50px;
+                @include below($laptop) {
+                    font-size: 16px;
+                    min-width: 30px;
+                }
             }
 
             small {
@@ -161,11 +223,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            @include below($laptop) {
+                width: 30px;
+                height: 30px;
+            }
+
             img {
                 display: block;
                 width: 28px;
                 height: auto;
                 margin-bottom: 0;
+                @include below($laptop) {
+                    width: 18px;
+                }
             }
         }
 
