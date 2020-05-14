@@ -1,0 +1,65 @@
+
+
+.ribbon {
+
+    position: relative;
+    margin-bottom: 36px;
+
+    &-media {
+        @include cover();
+        @include no-events();
+        z-index: 0;
+
+        img {
+            display: block;
+            height: 100%;
+            width: 100%;
+            margin-bottom: 0;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        &:after {
+            display: block;
+            content: "";
+            clear: both;
+            background-color: white;
+            opacity: .85;
+            @include cover();
+            z-index: 1;
+        }
+    }
+
+    &-content {
+        position: relative;
+        padding: 0 26px;
+        z-index: 1;
+    }
+    &-box {
+        display: flex;
+        justify-content: space-between;
+        height: 80px;
+        .box-item {
+            flex: 1 1 auto;
+            display: flex;
+            align-items: center;
+            &.compact {
+                flex-grow: 0;
+                flex-shrink: 0;
+            }
+        }
+
+    }
+    &-title {
+        padding: 0 6px;
+        padding-right: 25px;
+        font-size: 30px;
+        font-weight: 300;
+        line-height: 1.1;
+        color: $color-grey-dark;
+        box-sizing: border-box;
+    }
+    &-actions {
+        text-align: right;
+    }
+}

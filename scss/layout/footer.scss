@@ -1,0 +1,49 @@
+
+.footer {
+    &-container {
+        position: relative;
+        padding: 0 15px;
+        @include center(1054px);
+        box-sizing: border-box;
+    }
+    &-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .box-item {
+            flex: 1 1 auto;
+            padding: 28px 0;
+            min-height: 26px;
+            box-sizing: border-box;
+        }
+    }
+    &-nav {
+        &-item {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 12px;
+            font-weight: 300;
+            line-height: 24px;
+            margin-right: 20px;
+            letter-spacing: 0.025em;
+            text-decoration: none;
+            color: $color-grey-dark;
+
+            &:hover,
+            &:focus {
+                outline: none;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .line-divider {
+        display: block;
+        height: 0;
+        border-top: 1px dotted #979797;
+        width: 100%;
+    }
+}
