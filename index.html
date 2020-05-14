@@ -50,15 +50,32 @@
 
 	<!-- Script Important -->
 </head>
-<body>
+<body ng-app="app">
 		
 	<!-- app -->
 	<div class="app">
 
 		<!-- header -->
+		<header class="header">
+			<div class="header-container">
+				<div class="header-box">
+					<div class="header-brand"> Rule of Thumb </div>
+					<div class="header-nav">
+						<nav class="nav">
+							<a href="#" class="nav-link">Past Trials</a>
+							<a href="#" class="nav-link">How It Work</a>
+							<a href="#" class="nav-link">Log In / Sign Up</a>
+						</nav>
+						<div class="search">
+							<div class="search-icon"><img src="img/icon-search.png" alt="search"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
 
 		<!-- hero -->
-		<div class="hero" hidden>
+		<div class="hero">
 
 			<div class="hero-bg">
 				<img src="img/pope-masthead.jpg" alt="pope francis">
@@ -78,7 +95,7 @@
 						</div>
 						<div class="hero-actions">
 							<img src="img/icon-wiki.png" alt="wiki">
-							<a class="hero-link" href="#">More information</a>
+							<a class="hero-link" href="https://en.wikipedia.org/wiki/Pope_Francis" target="_blank">More information</a>
 						</div>
 						<div class="hero-q">What’s Your Verdict?</div>
 					</div>
@@ -100,7 +117,7 @@
 		</div>
 
 		<!-- container -->
-		<div class="container">
+		<section class="container">
 
 			<!-- alert -->
 			<div class="alert">
@@ -121,22 +138,25 @@
 			</div>
 	
 			<!-- votes -->
-			<div class="votes" hidden>
+			<div class="votes" ng-controller="votesController as VC">
 				<div class="votes-head">
 					<h2 class="votes-title">Previous Rulings</h2>
 				</div>
-				<!-- TODO add directive -->
-				<div class="votes-content" votes>
-					<div class="vote-box">
+
+				<div class="votes-content">
+
+					<!-- repeat -->
+					<div class="vote-box" ng-repeat="user in VC.users">
 						<div class="vote-media">
-							<img src="img/kanye-thumb.jpg" alt="kanye">
+							<img ng-src="{{ user.thumb }}" alt="kanye">
 						</div>
 						<div class="vote-info">
 							<div class="vote-body">
-								<div class="vote-title">Kanye West</div>
+								<div class="vote-title">{{ user.username }}</div>
+								<!-- <div class="vote-subtitle"><strong>1 month ago</strong> in <span>Entertainment</span></div> -->
 								<div class="vote-description">
 									<p>
-										Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.
+										{{ user.description }}
 									</p>
 								</div>
 
@@ -166,13 +186,13 @@
 							</div>
 							<div class="vote-bar">
 								<div class="bar-item th-ocean">
-									<div class="bar-icon">
+									<div class="bar-icon" ng-click="user.votes.likes = user.votes.likes + 1; user.votes.count = user.votes.count + 1">
 										<img src="img/icon-like.png" alt="" width="28">
 									</div>
 								</div>
 								<div class="bar-item bar-values">
-									<span class="bar-like th-ocean" style="width: 25%;">25 <small>%</small></span>
-									<span class="bar-dislike th-orange" style="width: 75%;">75 <small>%</small></span>
+									<span class="bar-like th-ocean" ng-style="{'width': user.value_likes + '%'}">{{ user.value_likes = (user.votes.likes * 100) / user.votes.count | number:1 }} <small>%</small></span>
+									<span class="bar-dislike th-orange" ng-style="{'width': user.value_dislikes + '%'}">{{ user.value_dislikes = (user.votes.dislike * 100) / user.votes.count | number:1 }} <small>%</small></span>
 								</div>
 								<div class="bar-item th-orange">
 									<div class="bar-icon">
@@ -204,9 +224,9 @@
 				</div>
 			</div>
 
-		</div>
+		</section>
 
-		<div class="footer">
+		<footer class="footer">
 			<div class="footer-container">
 				<div class="line-divider"></div>
 				<div class="footer-box">
@@ -228,13 +248,14 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</footer>
 
 	</div>
 
 	<!-- plugins -->
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-sanitize.min.js"></script>
 
 	<!-- application js -->
 	<script src="js/app.js"></script>
