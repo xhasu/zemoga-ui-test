@@ -61,13 +61,18 @@
 				<div class="header-box">
 					<div class="header-brand"> Rule of Thumb </div>
 					<div class="header-nav">
-						<nav class="nav">
+						<nav class="nav" ng-class="{'open': open_nav}">
 							<a href="#" class="nav-link">Past Trials</a>
 							<a href="#" class="nav-link">How It Work</a>
 							<a href="#" class="nav-link">Log In / Sign Up</a>
 						</nav>
 						<div class="search">
 							<div class="search-icon"><img src="img/icon-search.png" alt="search"></div>
+						</div>
+						<div class="nav-icon" ng-click="open_nav = !open_nav">
+							<span></span>
+							<span></span>
+							<span></span>
 						</div>
 					</div>
 				</div>

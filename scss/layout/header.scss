@@ -16,6 +16,10 @@
         background-color: transparent;
         background: linear-gradient(to bottom, rgba($color-grey-dark, .82), rgba($color-grey-dark, 0));
         z-index: 0;
+
+        @include below($tablet) {
+            height: 120px;
+        }
     }
 
     &-container {
@@ -35,6 +39,10 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @include below($tablet) {
+            top: 0;
+        }
     }
     &-brand {
         flex-grow: 0;
@@ -45,20 +53,88 @@
         img {
             @include img-responsive();
         }
+        @include below($phone) {
+            font-size: 18px;
+        }
     }
     &-nav {
         text-align: right;
         .nav {
+            position: relative;
             display: inline-block;
             vertical-align: middle;
             padding: 0 22px;
             box-sizing: border-box;
+
+            &:after {
+                content: "";
+                height: 0;
+                width: 0;
+                border: 8px solid transparent;
+                border-bottom-color: $color-grey;
+                position: absolute;
+                top: -16px;
+                right: 8px;
+            }
+
+            @include below($tablet) {
+                display: none;
+                &.open {
+                    display: inline-block;                    
+                }
+            }
         }
         .nav-link {
             margin: 0 22px;
             display: inline-block;
             vertical-align: middle;
             text-decoration: none;
+        }       
+
+        @include below($tablet) {
+            .nav.open {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 240px;
+                padding: 8px;
+                text-align: center;
+                color: white;
+                background-color: $color-grey;
+
+                .nav-link {
+                    display: block;
+                    margin: 4px 0;
+                    padding: 0 10px;
+                }
+            }
+        }
+    }
+
+    .nav-icon {
+        
+        display: none;
+        width: 28px;
+        margin-left: 24px;
+        cursor: pointer;
+
+        span {
+            display: block;
+            height: 3px;
+            margin-bottom: 4px;
+            width: 100%;
+            background-color: white;
+            &:nth-child(2) {
+                width: 90%;
+            }
+            &:nth-child(3) {
+                width: 80%;
+            }
+        }
+
+        @include below($tablet) {
+            display: inline-block;
+            vertical-align: middle;
         }
     }
     
