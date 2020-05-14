@@ -7,7 +7,6 @@ Tiempo: 7h
 TODOS:
 *   Persistir datos en localStorage/ServerSide
 *   Enrutador html5mode para internas del menu
-*   Hero Banner: responsive
 
 STACK:
 *   HTML5 / scss / angularjs@1.7*
