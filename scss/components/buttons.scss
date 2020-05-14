@@ -35,4 +35,10 @@
     &:hover {
         background-color: rgba(white, .4);
     }
+
+    @include below($sm) {
+        height: 35px;
+        font-size: 16px;
+        border-width: 2px;
+    }
 }

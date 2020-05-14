@@ -5,6 +5,10 @@
     justify-content: flex-end;
     align-items: center;
 
+    @include below($sm) {
+        justify-content: center;
+    }
+
     &-title {
         font-size: 12px;
         font-weight: 300;
